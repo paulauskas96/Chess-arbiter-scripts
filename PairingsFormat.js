@@ -28,7 +28,7 @@ function removeHeader()
     var divs = document.querySelectorAll('form div');
 
     for (i = 0; i < divs.length; i++) {
-        if (!divs[i].querySelector('table.CRs1')) {
+        if (!divs[i].closest("table.CRs1") && !divs[i].querySelector("table.CRs1")) {
             divs[i].remove();
         }
     }
@@ -40,29 +40,8 @@ function removeHeader()
     }
 }
 
-function removeCol(str) {
-    var str = "No.";
-    var indices = [];
-    var rowNodes = document.querySelector('table.CRs1').querySelector('tr').querySelectorAll('th');
-    for (i = 0; i < rowNodes.length; i++) {
-        if (rowNodes[i].innerText === str) {
-            indices.push(i);
-        }
-    }
-    var rows = document.querySelectorAll('table.CRs1 tr');
-    for (j = 0; j < rows.length; j++) {
-        var cells = rows[j].querySelectorAll('th,td');
-        for (y = 0; y < cells.length; y++) {
-            if (indices.includes(y)) {
-                cells[y].remove();
-            }
-        }
-    }
-}
-
 var totalRounds = getTotalRounds('Board Pairings');
 removeHeader();
 if (totalRounds) {
     constructActionButton(totalRounds);
 }
-removeCol('No.');
