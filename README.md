@@ -10,6 +10,7 @@ Browser bookmarklets for chess arbiters working with [chess-results.com](https:/
 |---|---|
 | [`pgn-export/`](pgn-export/) | Source for the PGN export bookmarklet (individual Swiss) |
 | [`team-pgn-export/`](team-pgn-export/) | Source for the team PGN export bookmarklet (team/league) |
+| [`lichess-teams/`](lichess-teams/) | Source for the Lichess broadcaster team assignment bookmarklet |
 | [`pairings-format/`](pairings-format/) | Source for the pairings formatter bookmarklet |
 | [`bookmarklets/`](bookmarklets/) | Bookmarklet HTML files ready to import |
 
@@ -58,3 +59,14 @@ It cleans up the page layout and adds a *show next round* link.
 3. A `.pgn` file downloads automatically, with ratings, FIDE IDs, and team names included.
 
 > White/black is determined by board position within each match: odd boards play left=white, even boards play left=black.
+
+### LICHESS TEAMS
+1. Navigate to any page of the tournament on chess-results.com and click **LICHESS TEAMS**.
+2. The script fetches the alphabetical player list (`art=15`) and builds one line per player in the format required by the Lichess broadcaster app:
+   ```
+   Team name; FIDE ID
+   ```
+   If a player has no FIDE ID, their name is used instead.
+3. The result is copied to your clipboard, ready to paste into the *Assign players to teams* field.
+
+> Supported site languages: English (`lan=1`) and Lithuanian (`lan=30`).
